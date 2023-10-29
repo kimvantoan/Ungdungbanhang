@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">UngDungBanHang</string>
+    <string name="please_connect_to_internet" />
+    <string name="title_activity_thong_tin">ThongTinActivity</string>
+    <string name="title_activity_thongtin">Thongtin</string>
+</resources>
