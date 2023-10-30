@@ -1,34 +1,56 @@
 package com.example.ungdungbanhang.activitiy;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.ungdungbanhang.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.example.ungdungbanhang.databinding.ActivityThongTinBinding;
+import com.example.ungdungbanhang.databinding.ActivityThongtinmapBinding;
 
-public class ThongTinActivity extends FragmentActivity implements OnMapReadyCallback {
+public class thongtinmap extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private ActivityThongTinBinding binding;
+    private ActivityThongtinmapBinding binding;
+    Toolbar toolbarthongtin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        binding = ActivityThongTinBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
+        setContentView(R.layout.activity_thongtinmap);
+        toolbarthongtin = (Toolbar) findViewById(R.id.toolbarthongtin);
+        Actionbar();
+//        binding = ActivityThongtinmapBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+    }
+
+    private void Actionbar() {
+        setSupportActionBar(toolbarthongtin);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbarthongtin.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     /**
@@ -43,10 +65,9 @@ public class ThongTinActivity extends FragmentActivity implements OnMapReadyCall
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng truongthanglong = new LatLng(20.97616654936204, 105.81556163723975);
+        mMap.addMarker(new MarkerOptions().position(truongthanglong).title("Shop bán điện thoại laptop kimtoan"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(truongthanglong));
     }
 }

@@ -84,6 +84,16 @@ public class MainActivity extends AppCompatActivity {
                         }
                         drawerLayout.closeDrawer(GravityCompat.START);
                         break;
+                    case 2:
+                        if(CheckConnection.haveNetworkConnection(getApplicationContext())){
+                            Intent intent =new Intent(MainActivity.this,thongtinmap.class);
+                            startActivity(intent);
+                        }
+                        else {
+                            CheckConnection.ShowToast_Short(getApplicationContext(),"khong co mang");
+                        }
+                        drawerLayout.closeDrawer(GravityCompat.START);
+                        break;
                     case 3:
                         if(CheckConnection.haveNetworkConnection(getApplicationContext())){
                             Intent intent =new Intent(MainActivity.this,DienThoaiActivity.class);
